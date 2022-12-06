@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PullUps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="PullUps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemGray4Color"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="K1N-SZ-idl" kind="presentation" modalPresentationStyle="fullScreen" id="iwE-KM-GnL"/>
+                                    <segue destination="K1N-SZ-idl" kind="presentation" identifier="toPlan" modalPresentationStyle="fullScreen" id="iwE-KM-GnL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -188,7 +188,6 @@
                                 <connections>
                                     <outlet property="cellBackground" destination="5bL-dg-yCq" id="m9Z-ik-tHC"/>
                                     <outlet property="setLabel" destination="L10-Ar-BC9" id="7aN-g4-w2t"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToMain" modalPresentationStyle="fullScreen" id="eER-z0-7C1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,10 +196,13 @@
                             <outlet property="delegate" destination="K1N-SZ-idl" id="kwM-ev-Ykk"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="toMain" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="5tK-qg-j37"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8L-Ee-2eJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="98"/>
+            <point key="canvasLocation" x="1707" y="98"/>
         </scene>
     </scenes>
     <resources>

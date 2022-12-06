@@ -1,5 +1,9 @@
 import UIKit
 
+protocol SetsDelegate{
+    func setDelegate(_ data: [String])
+}
+
 struct Sets{
     var level = ""
     var setsOfLevel: [[Int]] = [[]]
@@ -146,6 +150,8 @@ class SetsTableViewController: UITableViewController {
     
     var allSets = SetsFabric.sets()
     
+    var delegate: SetsDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -189,8 +195,11 @@ class SetsTableViewController: UITableViewController {
             let actSet = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][i])"
             activeSetArray.append(actSet)
         }
+        delegate?.setDelegate(activeSetArray)
         UserSets.shared.selectionSet = activeSetArray
+        
         print(activeSetArray)
         print(tableView.indexPathsForSelectedRows!)
+        performSegue(withIdentifier: "toMain", sender: nil)
     }
 }

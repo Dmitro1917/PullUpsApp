@@ -6,7 +6,6 @@ import AudioToolbox
 
 class ViewController: UIViewController{
     
-//    @IBOutlet weak var planPicker: UIPickerView!
     @IBOutlet weak var doneButton: UIButton!
     
     var player: AVAudioPlayer?
@@ -35,20 +34,24 @@ class ViewController: UIViewController{
     
     let proximity = UIDevice()
     
+    var customPlan = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(UserSets.shared.selectionSet)
         
-        if UserSets.shared.selectionSet != nil {
-            for i in 0...4{
-                let num = UserSets.shared.selectionSet![i]
-                plan.append(num)
-            }
+        if customPlan{
+            customPlan = false
         } else {
-            plan = ["0", "0", "0", "0", "0"]
+            if UserSets.shared.selectionSet != nil {
+                for i in 0...4{
+                    let num = UserSets.shared.selectionSet![i]
+                    plan.append(num)
+                }
+            } else {
+                plan = ["0", "0", "0", "0", "0"]
+            }
         }
-        
-//        plan = [3, 15, 33, 3, 5] // ListOfSetsViewController.levelFour[5]
         proximity.isProximityMonitoringEnabled = true
         
         firstSetLabel.text = plan[0]
@@ -58,48 +61,6 @@ class ViewController: UIViewController{
         fifthSetLabel.text = plan[4]
         
         timerLabel.text = matching(str: plan[0])
-        
-/*
-        manager.startAccelerometerUpdates()
-        manager.accelerometerUpdateInterval = 1
-        
-        guard let startDate = Calendar.current.date(byAdding: .hour, value: -8, to: Date()) else {
-            return
-        }
-        if CMPedometer.isDistanceAvailable() {
-            print("бля")
-//            self.pedometer.startUpdates(from: Date()) { data, error in
-            pedometer.queryPedometerData(from: startDate, to: Date()) { data, error in
-                print("бля2")
-                if error == nil{
-                    if let response = data {
-                        DispatchQueue.main.async {
-                            print(response.distance)
-                            print(response.numberOfSteps)
-                            self.accelerateLabel.text = "\(response.numberOfSteps.intValue)"
-                        }
-                    }
-                }
-            }
-        }
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                if let data = self.manager.accelerometerData {
-                    let x = data.acceleration.x
-                    let y = data.acceleration.y
-                    let z = data.acceleration.z
-                    self.accelerateLabel.text = """
-x = \(x)
-y = \(y)
-z = \(z)
-
-Что это значит?
-Хуй знает.
-Но цыфарки бегают
-"""
- 
-                }
-        }
- */
     }
     
     @IBAction func setDone(_ sender: Any) {
@@ -162,7 +123,7 @@ z = \(z)
         \(self.timerDuration) сек.
         """
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [self] Timer in
-            // Говорилка
+            //  Разблокируй, если надо будет проговорить
 //            let synthesizer = AVSpeechSynthesizer()
             self.doneButton.titleLabel?.text = "Остановить таймер"
             self.timerDuration -= 1
@@ -177,7 +138,7 @@ z = \(z)
 //                    AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
 //                }
                 self.timer.invalidate()
-                // разблокируй, если надо будет проговорить
+//  Разблокируй, если надо будет проговорить
 //                let pullUpsCount = AVSpeechUtterance(string: "Пора сделать \(self.plan[self.numberOfSet-2]) подтягиваний")
 //                pullUpsCount.voice = AVSpeechSynthesisVoice(language: "ru-RU")
 //                pullUpsCount.rate = 0.5
@@ -204,5 +165,22 @@ z = \(z)
         case 4: return "\(str) раза"
         default: return "\(str) раз"
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let svc = segue.destination as? SetsTableViewController, segue.identifier == "toPlan"{
+            svc.delegate = self
+            customPlan = true
+        }
+    }
+}
+
+extension ViewController: SetsDelegate{
+    func setDelegate(_ data: [String]) {
+        firstSetLabel.text = data[0]
+        secondSetLabel.text = data[1]
+        thirdSetLabel.text = data[2]
+        fourthSetLabel.text = data[3]
+        fifthSetLabel.text = data[4]
     }
 }
