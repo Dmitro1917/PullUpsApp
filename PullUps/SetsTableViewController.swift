@@ -174,62 +174,24 @@ class SetsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetCell") as! SetTableViewCell
-        cell.setLabel.text = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][0])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][1])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][2])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][3])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][4])"
+        var setText = ""
+        for i in allSets[indexPath.section].setsOfLevel[indexPath.row]{
+            setText += String(i) + " "
+        }
+        cell.setLabel.text = setText
+//        "\(allSets[indexPath.section].setsOfLevel[indexPath.row][0])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][1])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][2])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][3])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][4])"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var activeSetArray: [String] = []
         let activeSet = allSets[indexPath.row]
-                for i in 0...4{
-                    let actSet = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][i])"
-                    activeSetArray.append(actSet)
-                }
-                UserSets.shared.selectionSet = activeSetArray
+        for i in 0...4{
+            let actSet = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][i])"
+            activeSetArray.append(actSet)
+        }
+        UserSets.shared.selectionSet = activeSetArray
         print(activeSetArray)
         print(tableView.indexPathsForSelectedRows!)
-//        if let viewController = storyboard?.instantiateViewController(identifier: "ViewController") as? ViewController {
-////            viewController.plan = activeSetArray
-//        }
-//
-//                    if let viewController = storyboard?.instantiateViewController(identifier: "ViewController") as? ViewController {
-//                        navigationController?.pushViewController(viewController, animated: true)
-//                    }
-//        let cell = SetTableViewCell()
-//        cell.setLabel.textColor = .red
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            var activeSetArray: [String] = []
-//            let activeSet = allSets[indexPath.row]
-//                    for i in 0...4{
-//                        let actSet = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][i])"
-//                        activeSetArray.append(actSet)
-//                    }
-//                    UserSets.shared.selectionSet = activeSetArray
-//            print(activeSetArray)
-//            print(tableView.indexPathsForSelectedRows!)
-//            let detailVC = segue.destination as! ViewController
-//            detailVC.firstSetLabel.text = activeSetArray[0]
-//            detailVC.secondSetLabel.text = activeSetArray[1]
-//            detailVC.thirdSetLabel.text = activeSetArray[2]
-//            detailVC.fourthSetLabel.text = activeSetArray[3]
-//            detailVC.fifthSetLabel.text = activeSetArray[4]
-//        }
-//    }
 }
-
-//struct Row {
-//    let title: String
-//    let generator: (Parameters) -> UIViewController
-//}
-//
-//let section: [Row] = [
-//    Row(title: "first", generator: { (parameters) -> UIViewController in
-//        return FirstViewController()
-//    }),
-//    Row(title: "second", generator: { (parameters) -> UIViewController in
-//        return SecondViewController()
-//    })
-//]
