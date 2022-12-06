@@ -179,7 +179,6 @@ class SetsTableViewController: UITableViewController {
             setText += String(i) + " "
         }
         cell.setLabel.text = setText
-//        "\(allSets[indexPath.section].setsOfLevel[indexPath.row][0])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][1])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][2])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][3])   \(allSets[indexPath.section].setsOfLevel[indexPath.row][4])"
         return cell
     }
     
