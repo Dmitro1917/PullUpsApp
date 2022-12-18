@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2669DD64289ED3D100978B62 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669DD63289ED3D100978B62 /* SetTableViewCell.swift */; };
+		266F9E5F294FA693008F7B1F /* SetsPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F9E5E294FA693008F7B1F /* SetsPlan.swift */; };
 		26C01AD02907119400531FBE /* UserSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C01ACF2907119400531FBE /* UserSets.swift */; };
 		26CBBB6C282D06CE00819F1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBBB6B282D06CE00819F1D /* AppDelegate.swift */; };
 		26CBBB6E282D06CE00819F1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CBBB6D282D06CE00819F1D /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		2669DD63289ED3D100978B62 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
+		266F9E5E294FA693008F7B1F /* SetsPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsPlan.swift; sourceTree = "<group>"; };
 		26C01ACF2907119400531FBE /* UserSets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSets.swift; sourceTree = "<group>"; };
 		26CBBB68282D06CE00819F1D /* PullUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26CBBB6B282D06CE00819F1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				2669DD63289ED3D100978B62 /* SetTableViewCell.swift */,
 				26CBBB71282D06CE00819F1D /* Main.storyboard */,
 				26DE126F290AC41C00FE072A /* SetsTableViewController.swift */,
+				266F9E5E294FA693008F7B1F /* SetsPlan.swift */,
 				26CBBB74282D06D100819F1D /* Assets.xcassets */,
 				26CBBB76282D06D100819F1D /* LaunchScreen.storyboard */,
 				26CBBB79282D06D100819F1D /* Info.plist */,
@@ -283,6 +286,7 @@
 			files = (
 				26CBBB70282D06CE00819F1D /* ViewController.swift in Sources */,
 				2669DD64289ED3D100978B62 /* SetTableViewCell.swift in Sources */,
+				266F9E5F294FA693008F7B1F /* SetsPlan.swift in Sources */,
 				26DE1270290AC41C00FE072A /* SetsTableViewController.swift in Sources */,
 				26CBBB6C282D06CE00819F1D /* AppDelegate.swift in Sources */,
 				26CBBB6E282D06CE00819F1D /* SceneDelegate.swift in Sources */,
