@@ -1,3 +1,10 @@
+//
+//  SetsPlan.swift
+//  PullUps
+//
+//  Created by Дмитро Селиванов on 19.12.2022.
+//
+
 import UIKit
 import CoreMotion
 import CoreLocation
@@ -72,28 +79,28 @@ class ViewController: UIViewController{
         switch numberOfSet {
         case 1:
             firstSetLabel.textColor = .red
-            fifthSetLabel.textColor = .white
+            fifthSetLabel.textColor = .gray
             startTimer()
         case 2:
-            firstSetLabel.textColor = .white
+            firstSetLabel.textColor = .gray
             secondSetLabel.textColor = .red
             startTimer()
         case 3:
-            secondSetLabel.textColor = .white
+            secondSetLabel.textColor = .gray
             thirdSetLabel.textColor = .red
             startTimer()
         case 4:
-            thirdSetLabel.textColor = .white
+            thirdSetLabel.textColor = .gray
             fourthSetLabel.textColor = .red
             startTimer()
         case 5:
-            fourthSetLabel.textColor = .white
+            fourthSetLabel.textColor = .gray
             fifthSetLabel.textColor = .red
             startTimer()
         default:
             timerLabel.text = "Готово"
             numberOfSet = 0
-            fifthSetLabel.textColor = .white
+            fifthSetLabel.textColor = .gray
         }
         print(numberOfSet)
         numberOfSet += 1
@@ -123,7 +130,7 @@ class ViewController: UIViewController{
         \(self.timerDuration) сек.
         """
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [self] Timer in
-            //  Разблокируй, если надо будет проговорить
+// Разблокируй, если надо будет проговорить
 //            let synthesizer = AVSpeechSynthesizer()
             self.doneButton.titleLabel?.text = "Остановить таймер"
             self.timerDuration -= 1
@@ -138,7 +145,7 @@ class ViewController: UIViewController{
 //                    AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
 //                }
                 self.timer.invalidate()
-//  Разблокируй, если надо будет проговорить
+// Разблокируй, если надо будет проговорить
 //                let pullUpsCount = AVSpeechUtterance(string: "Пора сделать \(self.plan[self.numberOfSet-2]) подтягиваний")
 //                pullUpsCount.voice = AVSpeechSynthesisVoice(language: "ru-RU")
 //                pullUpsCount.rate = 0.5
@@ -154,15 +161,11 @@ class ViewController: UIViewController{
     func matching(str: String) -> String {
         var num = Int(str)!
         if num > 10 {
-            if num < 20{
-                num = 1
-            }
+            if num < 20 { num = 1 }
             num = num % 10
         }
         switch num {
-        case 2: return "\(str) раза"
-        case 3: return "\(str) раза"
-        case 4: return "\(str) раза"
+        case 2...4: return "\(str) раза"
         default: return "\(str) раз"
         }
     }

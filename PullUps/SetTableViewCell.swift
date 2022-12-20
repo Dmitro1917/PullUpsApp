@@ -1,3 +1,10 @@
+//
+//  SetsPlan.swift
+//  PullUps
+//
+//  Created by Дмитро Селиванов on 19.12.2022.
+//
+
 import UIKit
 
 class SetTableViewCell: UITableViewCell {

@@ -1,3 +1,10 @@
+//
+//  SetsPlan.swift
+//  PullUps
+//
+//  Created by Дмитро Селиванов on 19.12.2022.
+//
+
 import UIKit
 
 protocol SetsDelegate{
@@ -45,7 +52,6 @@ class SetsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var activeSetArray: [String] = []
-        let activeSet = allSets[indexPath.row]
         for i in 0...4{
             let actSet = "\(allSets[indexPath.section].setsOfLevel[indexPath.row][i])"
             activeSetArray.append(actSet)
