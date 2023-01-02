@@ -1,5 +1,5 @@
 //
-//  SetsPlan.swift
+//  SetTableViewCell.swift
 //  PullUps
 //
 //  Created by Дмитро Селиванов on 19.12.2022.

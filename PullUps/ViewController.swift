@@ -1,5 +1,5 @@
 //
-//  SetsPlan.swift
+//  ViewController.swift
 //  PullUps
 //
 //  Created by Дмитро Селиванов on 19.12.2022.
@@ -9,7 +9,7 @@ import UIKit
 import CoreMotion
 import CoreLocation
 import AVKit
-import AudioToolbox
+//import AudioToolbox
 
 class ViewController: UIViewController{
     
@@ -79,7 +79,6 @@ class ViewController: UIViewController{
         switch numberOfSet {
         case 1:
             firstSetLabel.textColor = .red
-            fifthSetLabel.textColor = .gray
             startTimer()
         case 2:
             firstSetLabel.textColor = .gray
@@ -141,9 +140,6 @@ class ViewController: UIViewController{
             if self.timerDuration == 0 {
                 AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
                 AudioServicesPlaySystemSound(1013)
-//                for i in 0...self.plan[self.numberOfSet-2]{
-//                    AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
-//                }
                 self.timer.invalidate()
 // Разблокируй, если надо будет проговорить
 //                let pullUpsCount = AVSpeechUtterance(string: "Пора сделать \(self.plan[self.numberOfSet-2]) подтягиваний")
