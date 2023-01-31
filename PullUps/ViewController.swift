@@ -17,8 +17,10 @@ class ViewController: UIViewController{
     
     var player: AVAudioPlayer?
     
+    let manager = CMMotionManager()
+    
     @IBOutlet weak var notDoneButton: UIButton!
-
+    
     @IBOutlet weak var firstSetLabel: UILabel!
     @IBOutlet weak var secondSetLabel: UILabel!
     @IBOutlet weak var thirdSetLabel: UILabel!
@@ -68,6 +70,31 @@ class ViewController: UIViewController{
         fifthSetLabel.text = plan[4]
         
         timerLabel.text = matching(str: plan[0])
+        
+        getMotionData(num: Int(plan[0])!)
+    }
+    
+    
+    func getMotionData(num: Int){
+        var n = num - 1
+        if self.manager.isDeviceMotionAvailable {
+            manager.deviceMotionUpdateInterval = 0.2
+            manager.startDeviceMotionUpdates(to: .main, withHandler: { [self] (data, error) in
+                print(data!.userAcceleration.y)
+                    if data!.userAcceleration.y < -1 {
+                        self.timerLabel.text = matching(str: "\(n)")
+                        n -= 1
+                        if n < 0 {
+                            AudioServicesPlaySystemSound(1000)
+                            manager.stopDeviceMotionUpdates()
+                            setDone(0)
+                        } else {
+                            AudioServicesPlaySystemSound(1013)
+                        }
+                    }
+            })
+            
+        }
     }
     
     @IBAction func setDone(_ sender: Any) {
@@ -75,6 +102,7 @@ class ViewController: UIViewController{
         if timer.isValid {
             timer.invalidate()
             timerLabel.text = matching(str: plan[numberOfSet-2])
+            getMotionData(num: Int(plan[numberOfSet-2])!)
         } else {
         switch numberOfSet {
         case 1:
@@ -147,6 +175,7 @@ class ViewController: UIViewController{
 //                pullUpsCount.rate = 0.5
 //                synthesizer.speak(pullUpsCount)
                 self.timerLabel.text = self.matching(str: self.plan[self.numberOfSet-2])
+                self.getMotionData(num: Int(self.plan[self.numberOfSet-2])!)
                 self.doneButton.titleLabel?.text = "Сделал"
             }
             print(self.timerDuration)
